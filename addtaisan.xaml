@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="my2.view.addtaisan"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:my2.view"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             TextElement.FontSize="13"
+TextOptions.TextFormattingMode="Ideal"
+TextOptions.TextRenderingMode="Auto"
+Background="{DynamicResource MaterialDesignPaper}"
+FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="400" d:DesignWidth="600">
+    <Grid Margin="0,0,20,0">
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Thêm tài sản" Margin="30,10,0,5" FontSize="22"                     
+></TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="0" Width="250" Height="35" Margin="40,10,0,15" HorizontalAlignment="Left"
+VerticalAlignment="Center"
+materialDesign:HintAssist.Hint="Mã loại tài sản"
+Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox Grid.Row="1" Grid.Column="1" Width="250" Height="35" Margin="40,10,0,15" HorizontalAlignment="Left"
+VerticalAlignment="Center"
+materialDesign:HintAssist.Hint="Tên tài sản"
+Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <ComboBox Grid.Row="3" Grid.Column="0" Width="250" Height="35" Margin="40,10,0,15" HorizontalAlignment="Left" VerticalAlignment="Center"
+  MinWidth="72"
+  materialDesign:HintAssist.FloatingScale="1.5"
+  materialDesign:HintAssist.Hint="Vị trí đặt (tầng 1, 2, mái)"
+  ItemsSource="{Binding LongIntegerList}"
+  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+            
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <ComboBox Grid.Row="3" Grid.Column="1" Width="250" Height="35" Margin="40,10,0,15" HorizontalAlignment="Left" VerticalAlignment="Center"
+MinWidth="72"
+materialDesign:HintAssist.FloatingScale="1.5"
+materialDesign:HintAssist.Hint="Chất liệu"
+ItemsSource="{Binding LongIntegerList}"
+Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+            
+        </ComboBox>
+        <DatePicker Grid.Row="4" Grid.Column="0" Height="40" Margin="40,15,5,15" HorizontalAlignment="Left" VerticalAlignment="Center"
+  Width="180"
+  materialDesign:HintAssist.Hint="Ngày mua"
+                    
+  Style="{StaticResource MaterialDesignFilledDatePicker}" />
+       
+        <CheckBox Grid.Row="5" Grid.Column="0" Content="Thiết lập thời gian nhắc nhở bảo trì" Margin="40,15,15,5"></CheckBox>
+        <TextBox Grid.Row="4" Grid.Column="1" Width="250" Height="35" Margin="40,10,0,15" HorizontalAlignment="Left"
+VerticalAlignment="Center"
+materialDesign:HintAssist.Hint="Đơn giá VND"></TextBox>
+        
+
+        <ComboBox Grid.Row="6" Grid.Column="0" Height="35" Margin="30,12,5,15" HorizontalAlignment="Left" VerticalAlignment="Center"
+  Width="180"
+  materialDesign:HintAssist.Hint="Kỳ nhắc nhở bảo trì"
+  ItemsSource="{Binding LongIntegerList}"
+  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <TextBlock Text="Tháng" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20" Width="50"></TextBlock>
+        <Button Grid.Row="7" Grid.Column="1" Height="30"
+  Width="100"
+        HorizontalAlignment="Right" VerticalAlignment="Center" Margin="30"
+  Content="Lưu"
+                Background="DeepSkyBlue"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+  Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
+  ToolTip="Resource name: MaterialDesignRaisedSecondaryButton" />
+        <Button Grid.Row="7" Grid.Column="1" Height="30"
+Width="100"
+                Click="Button_dong_Click"
+      HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"
+Content="Hủy"
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
+              Background="Gray"
+                
+ToolTip="Resource name: MaterialDesignRaisedSecondaryButton" />
+        <ToggleButton Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left" Margin="40"
+  Style="{StaticResource MaterialDesignSwitchToggleButton}"
+  ToolTip="Default ToggleButton Style" />
+        <TextBox Text="Sử dụng" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left" Margin="85,0,0,0" Height="25"></TextBox>
+    </Grid>
+    
+</UserControl>
